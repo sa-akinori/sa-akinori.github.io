@@ -1,0 +1,37 @@
+---
+import LangToggle from './LangToggle.astro';
+import { getLangFromUrl, useTranslations, pathFor } from '../i18n';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const nav = [
+  { href: pathFor(lang, '/'), label: t('nav.home') },
+  { href: pathFor(lang, '/about'), label: t('nav.about') },
+  { href: pathFor(lang, '/research'), label: t('nav.research') },
+  { href: pathFor(lang, '/publications'), label: t('nav.publications') },
+  { href: pathFor(lang, '/cv'), label: t('nav.cv') },
+  { href: pathFor(lang, '/contact'), label: t('nav.contact') },
+];
+---
+<header class="sticky top-0 z-50 border-b border-slate-200 bg-white/80 backdrop-blur">
+  <div class="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
+    <a
+      href={pathFor(lang, '/')}
+      class="text-base font-semibold tracking-tight text-slate-900 transition hover:text-blue-700"
+    >
+      {t('site.title')}
+    </a>
+    <nav class="hidden items-center gap-6 text-sm md:flex">
+      {nav.map((item) => (
+        <a href={item.href} class="text-slate-600 transition hover:text-blue-700">
+          {item.label}
+        </a>
+      ))}
+      <LangToggle />
+    </nav>
+    <div class="md:hidden">
+      <LangToggle />
+    </div>
+  </div>
+</header>

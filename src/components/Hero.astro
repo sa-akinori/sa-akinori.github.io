@@ -1,0 +1,33 @@
+---
+import { getLangFromUrl, useTranslations, pathFor } from '../i18n';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+<section class="relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-sky-100">
+  <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,#bfdbfe,transparent_55%)] opacity-70"></div>
+  <div class="relative mx-auto max-w-5xl px-6 py-24 md:py-32">
+    <p class="text-xs font-semibold uppercase tracking-[0.2em] text-blue-700">
+      {t('hero.role')}
+    </p>
+    <h1 class="mt-4 text-5xl font-bold tracking-tight text-slate-900 md:text-6xl">
+      {t('hero.name')}
+    </h1>
+    <p class="mt-6 max-w-2xl text-lg text-slate-700">{t('hero.affiliation')}</p>
+    <p class="mt-2 max-w-2xl text-base text-slate-600">{t('hero.keywords')}</p>
+    <div class="mt-10 flex flex-wrap gap-4">
+      <a
+        href={pathFor(lang, '/research')}
+        class="inline-flex items-center rounded-md bg-blue-700 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-800"
+      >
+        {t('hero.cta.research')}
+      </a>
+      <a
+        href={pathFor(lang, '/contact')}
+        class="inline-flex items-center rounded-md border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-800 transition hover:border-blue-600 hover:text-blue-700"
+      >
+        {t('hero.cta.contact')}
+      </a>
+    </div>
+  </div>
+</section>
