@@ -6,13 +6,11 @@
   "nav.research": "Research",
   "nav.publications": "Publications",
   "nav.cv": "CV",
-  "nav.contact": "Contact",
   "hero.role": "Researcher",
   "hero.name": "Akinori Sato",
   "hero.affiliation": "ARWIT Promotion Center, Nara Institute of Science and Technology (NAIST)",
   "hero.keywords": "Cheminformatics / Machine Learning / Drug Discovery",
   "hero.cta.research": "View Research",
-  "hero.cta.contact": "Get in Touch",
   "about.title": "About",
   "about.placeholder": "Education, career, and research interests — coming soon.",
   "research.title": "Research",
@@ -21,8 +19,6 @@
   "publications.placeholder": "Publications and talks — coming soon.",
   "cv.title": "CV",
   "cv.placeholder": "CV (PDF) — coming soon.",
-  "contact.title": "Contact",
-  "contact.placeholder": "Email, social links, and ORCID — coming soon.",
   "lang.toggle": "日本語",
   "footer.copyright": "© 2026 Akinori Sato"
 }
