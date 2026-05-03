@@ -47,24 +47,6 @@ function formatPresentation(p: Presentation): string {
   </ol>
 
   <h2 class="mt-16 text-2xl font-semibold tracking-tight text-slate-900">
-    {t('publications.patents')}
-  </h2>
-  {patents.length === 0 ? (
-    <p class="mt-6 text-sm text-slate-500">{t('publications.patentsPlaceholder')}</p>
-  ) : (
-    <ul class="mt-6 space-y-4">
-      {patents.map((p) => (
-        <li class="flex flex-col gap-1 text-slate-700 sm:flex-row sm:gap-6">
-          {p.date && (
-            <span class="shrink-0 font-mono text-sm text-slate-500 sm:w-20">{p.date}</span>
-          )}
-          <span class="leading-relaxed">{p.text[lang]}</span>
-        </li>
-      ))}
-    </ul>
-  )}
-
-  <h2 class="mt-16 text-2xl font-semibold tracking-tight text-slate-900">
     {t('publications.presentations')}
   </h2>
 
@@ -91,6 +73,22 @@ function formatPresentation(p: Presentation): string {
       </li>
     ))}
   </ol>
+
+  <h2 class="mt-16 text-2xl font-semibold tracking-tight text-slate-900">
+    {t('publications.patents')}
+  </h2>
+  {patents.length > 0 && (
+    <ul class="mt-6 space-y-4">
+      {patents.map((p) => (
+        <li class="flex flex-col gap-1 text-slate-700 sm:flex-row sm:gap-6">
+          {p.date && (
+            <span class="shrink-0 font-mono text-sm text-slate-500 sm:w-20">{p.date}</span>
+          )}
+          <span class="leading-relaxed">{p.text[lang]}</span>
+        </li>
+      ))}
+    </ul>
+  )}
 
   <h2 class="mt-16 text-2xl font-semibold tracking-tight text-slate-900">
     {t('publications.grants')}
