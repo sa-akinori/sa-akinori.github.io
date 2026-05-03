@@ -1,10 +1,11 @@
-# Astro Starter Kit: Minimal
+# sa-akinori.github.io
 
-```sh
-npm create astro@latest -- --template minimal
-```
+Personal research website of Akinori Sato (NAIST, Cheminformatics).
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+- 日本語: https://sa-akinori.github.io/
+- English: https://sa-akinori.github.io/en/
+
+Built with [Astro](https://astro.build) + [Tailwind CSS](https://tailwindcss.com), deployed to GitHub Pages via GitHub Actions.
 
 ## 🚀 Project Structure
 

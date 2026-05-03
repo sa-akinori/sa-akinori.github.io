@@ -1,0 +1,42 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n';
+import { news } from '../data/profile';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const latest = news.slice(0, 5);
+---
+<section class="mx-auto max-w-3xl px-6 pt-16 pb-4">
+  <h2 class="text-2xl font-bold tracking-tight text-slate-900">{t('news.title')}</h2>
+  {latest.length === 0 ? (
+    <p class="mt-6 text-sm text-slate-500">{t('news.placeholder')}</p>
+  ) : (
+  <ul class="mt-6 divide-y divide-slate-200">
+    {latest.map((item) => (
+      <li class="flex flex-col gap-1 py-4 sm:flex-row sm:gap-6">
+        <time
+          datetime={item.date}
+          class="shrink-0 font-mono text-sm text-slate-500 sm:w-28"
+        >
+          {item.date}
+        </time>
+        <div class="text-slate-700">
+          {item.url ? (
+            <a
+              href={item.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hover:text-blue-700 hover:underline"
+            >
+              {item.text[lang]}
+            </a>
+          ) : (
+            <span>{item.text[lang]}</span>
+          )}
+        </div>
+      </li>
+    ))}
+  </ul>
+  )}
+</section>

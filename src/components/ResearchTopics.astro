@@ -1,0 +1,47 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n';
+import type { TranslationKey } from '../i18n';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const topics = [
+  {
+    image: '/images/topic-foundation.png',
+    titleKey: 'topic.foundation.title' as TranslationKey,
+    descKey: 'topic.foundation.desc' as TranslationKey,
+  },
+  {
+    image: '/images/topic-language.png',
+    titleKey: 'topic.language.title' as TranslationKey,
+    descKey: 'topic.language.desc' as TranslationKey,
+  },
+  {
+    image: '/images/topic-design.png',
+    titleKey: 'topic.design.title' as TranslationKey,
+    descKey: 'topic.design.desc' as TranslationKey,
+  },
+];
+---
+<section class="mx-auto max-w-5xl px-6 py-20">
+  <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+    {topics.map((topic) => (
+      <article class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-md">
+        <img
+          src={topic.image}
+          alt={t(topic.titleKey)}
+          class="h-20 w-20"
+          width="160"
+          height="160"
+          loading="lazy"
+        />
+        <h3 class="mt-4 text-lg font-semibold tracking-tight text-slate-900">
+          {t(topic.titleKey)}
+        </h3>
+        <p class="mt-2 text-sm leading-relaxed text-slate-600">
+          {t(topic.descKey)}
+        </p>
+      </article>
+    ))}
+  </div>
+</section>

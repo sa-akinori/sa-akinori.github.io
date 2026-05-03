@@ -1,13 +1,15 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import ResearchTopics from '../../components/ResearchTopics.astro';
 import { getLangFromUrl, useTranslations } from '../../i18n';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 <BaseLayout title={t('research.title')}>
-  <section class="mx-auto max-w-4xl px-6 py-24">
+  <section class="mx-auto max-w-4xl px-6 pt-24 pb-4">
     <h1 class="text-4xl font-bold tracking-tight text-slate-900">{t('research.title')}</h1>
-    <p class="mt-6 text-slate-600">{t('research.placeholder')}</p>
+    <p class="mt-6 text-slate-600">{t('research.intro')}</p>
   </section>
+  <ResearchTopics />
 </BaseLayout>
