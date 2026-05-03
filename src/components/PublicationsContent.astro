@@ -1,7 +1,15 @@
 ---
 import { getLangFromUrl, useTranslations } from '../i18n';
-import { peerReviewedPapers, miscPapers, researchmapUrl } from '../data/profile';
-import type { Paper } from '../data/profile';
+import {
+  peerReviewedPapers,
+  patents,
+  internationalPresentations,
+  domesticPresentations,
+  grants,
+  outreach,
+  researchmapUrl,
+} from '../data/profile';
+import type { Paper, Presentation } from '../data/profile';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -9,6 +17,11 @@ const t = useTranslations(lang);
 function formatPaper(p: Paper): string {
   const venuePart = p.venue ? `, ${p.venue}` : '';
   return `${p.authors}. "${p.title}"${venuePart}, ${p.year}.`;
+}
+
+function formatPresentation(p: Presentation): string {
+  const locationPart = p.location ? `, ${p.location}` : '';
+  return `${p.authors}. "${p.title}", ${p.venue}${locationPart}, ${p.date}.`;
 }
 ---
 <section class="mx-auto max-w-3xl px-6 py-20">
@@ -33,21 +46,77 @@ function formatPaper(p: Paper): string {
     ))}
   </ol>
 
-  {miscPapers.length > 0 && (
-    <>
-      <h2 class="mt-16 text-2xl font-semibold tracking-tight text-slate-900">
-        {t('publications.misc')}
-      </h2>
-      <ol class="mt-6 space-y-5">
-        {miscPapers.map((p, i) => (
-          <li class="flex gap-4 text-slate-700">
-            <span class="shrink-0 font-mono text-sm text-slate-500">[{miscPapers.length - i}]</span>
-            <p class="leading-relaxed">{formatPaper(p)}</p>
-          </li>
-        ))}
-      </ol>
-    </>
+  <h2 class="mt-16 text-2xl font-semibold tracking-tight text-slate-900">
+    {t('publications.patents')}
+  </h2>
+  {patents.length === 0 ? (
+    <p class="mt-6 text-sm text-slate-500">{t('publications.patentsPlaceholder')}</p>
+  ) : (
+    <ul class="mt-6 space-y-4">
+      {patents.map((p) => (
+        <li class="flex flex-col gap-1 text-slate-700 sm:flex-row sm:gap-6">
+          {p.date && (
+            <span class="shrink-0 font-mono text-sm text-slate-500 sm:w-20">{p.date}</span>
+          )}
+          <span class="leading-relaxed">{p.text[lang]}</span>
+        </li>
+      ))}
+    </ul>
   )}
+
+  <h2 class="mt-16 text-2xl font-semibold tracking-tight text-slate-900">
+    {t('publications.presentations')}
+  </h2>
+
+  <h3 class="mt-8 text-lg font-semibold tracking-tight text-slate-900">
+    {t('publications.intl')}
+  </h3>
+  <ol class="mt-4 space-y-4">
+    {internationalPresentations.map((p, i) => (
+      <li class="flex gap-4 text-slate-700">
+        <span class="shrink-0 font-mono text-sm text-slate-500">[{internationalPresentations.length - i}]</span>
+        <p class="leading-relaxed">{formatPresentation(p)}</p>
+      </li>
+    ))}
+  </ol>
+
+  <h3 class="mt-8 text-lg font-semibold tracking-tight text-slate-900">
+    {t('publications.domestic')}
+  </h3>
+  <ol class="mt-4 space-y-4">
+    {domesticPresentations.map((p, i) => (
+      <li class="flex gap-4 text-slate-700">
+        <span class="shrink-0 font-mono text-sm text-slate-500">[{domesticPresentations.length - i}]</span>
+        <p class="leading-relaxed">{formatPresentation(p)}</p>
+      </li>
+    ))}
+  </ol>
+
+  <h2 class="mt-16 text-2xl font-semibold tracking-tight text-slate-900">
+    {t('publications.grants')}
+  </h2>
+  <ul class="mt-6 space-y-4">
+    {grants.map((g) => (
+      <li class="flex flex-col gap-1 text-slate-700 sm:flex-row sm:gap-6">
+        {g.date && (
+          <span class="shrink-0 font-mono text-sm text-slate-500 sm:w-20">{g.date}</span>
+        )}
+        <span class="leading-relaxed">{g.text[lang]}</span>
+      </li>
+    ))}
+  </ul>
+
+  <h2 class="mt-16 text-2xl font-semibold tracking-tight text-slate-900">
+    {t('publications.outreach')}
+  </h2>
+  <ul class="mt-6 space-y-4">
+    {outreach.map((o) => (
+      <li class="flex flex-col gap-1 text-slate-700 sm:flex-row sm:gap-6">
+        <span class="shrink-0 font-mono text-sm text-slate-500 sm:w-20">{o.date ?? ''}</span>
+        <span class="leading-relaxed">{o.text[lang]}</span>
+      </li>
+    ))}
+  </ul>
 
   <p class="mt-16">
     <a

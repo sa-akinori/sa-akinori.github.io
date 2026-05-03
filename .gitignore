@@ -26,3 +26,6 @@ pnpm-debug.log*
 # Claude Code local notes (session plans, local settings)
 PLAN.md
 .claude/
+
+# Local-only reference materials (CVs etc. — not for public Pages)
+public/reference/
