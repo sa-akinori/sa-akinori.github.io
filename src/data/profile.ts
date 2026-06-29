@@ -88,6 +88,12 @@ export const researchKeywords: BilingualText[] = [
 
 export const peerReviewedPapers: Paper[] = [
   {
+    authors: 'Iwasaki, Y., Sato, A., Miyao, T.',
+    title: 'Methyl Cation Affinity and Methyl Anion Affinity Prediction Using Uni-Mol-Based Models',
+    venue: 'J. Phys. Chem. A',
+    year: 2026,
+  },
+  {
     authors: 'Ue, T., Sato, A., Miyao, T.',
     title: 'Analog Accessibility Score (AAscore) for Rational Compound Selection',
     venue: 'J. Chem. Inf. Model., 64(24), 9350–9360',
@@ -229,6 +235,14 @@ export const researchmapUrl = 'https://researchmap.jp/sato_akinori';
 export const labUrl = 'https://sites.google.com/view/naist-chemoinformatics/';
 
 export const news: NewsItem[] = [
+  {
+    date: '2026-06-16',
+    text: {
+      ja: '論文が公開されました。',
+      en: 'A new paper has been published.',
+    },
+    url: 'https://pubs.acs.org/doi/10.1021/acs.jpca.5c08537',
+  },
   {
     date: '2026-05-01',
     text: {
